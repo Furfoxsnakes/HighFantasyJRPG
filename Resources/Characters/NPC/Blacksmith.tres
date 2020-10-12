@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Resources/NPCDetails.cs" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites/Characters/Blacksmith/BlacksmithPortrait.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+HP = 0
+MP = 0
+Name = "Blacksmith"
+CharacterPortrait = ExtResource( 2 )
+LVL = 0
+EXP = 0
+MHP = 0
+MMP = 0
+STR = 0
+DEX = 0
+NRG = 0
+STA = 0
+DialogText = PoolStringArray( "Hello! I am the town\'s blacksmith.", "I don\'t have anything to do for you right now, but please come back another time." )

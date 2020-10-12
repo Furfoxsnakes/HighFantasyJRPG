@@ -1,0 +1,14 @@
+{
+  "Name": "Haedrig",
+  "Data": {
+    "Quest Title": [
+      "Welcome, traveller.",
+      "My name is Haedrig. I am the Blacksmith of the village.",
+      "Please return at a later time and I can craft some gear with you, or trade wares."
+    ],
+    "Quest Title 2": [
+      "This is some [shake level=10]quest text.[/shake]",
+      "And some more quest text."
+    ]
+  }
+}

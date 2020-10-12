@@ -1,0 +1,29 @@
+{
+  "Name":"Haedrig",
+  "PortraitPath":null,
+  "Dialog":
+    [
+      {
+        "Name":"Welcome to the village",
+        "Messages":
+          [
+            "Welcome, traveller.", 
+            "My name is Haedrig. I am this village's Blacksmith.", 
+            "Please return at another time and I will gladly trade and craft weapons and armour for you."
+          ],
+        "QuestID":0
+      },
+      {
+        "Name": "The hills have eyes",
+        "Messages":
+          [
+            "Traveller. We need your help.", 
+            "The local wildlife has become increasingly aggressive lately. There have been more and more attacks on the villagers as of late.",
+            "There have even been reports of animals entering the village at night and attacking people in their homes.",
+            "I have never seen anything like this, and it's only getting worse.",
+            "Please investigate what is causing the wildlife to act in such a way. Return with some answers and I will reward you with a personal gift."
+          ],
+        "QuestID": 0
+      }
+    ]
+}

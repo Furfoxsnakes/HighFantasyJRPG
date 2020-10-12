@@ -1,0 +1,440 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://UI/InventoryUI.cs" type="Script" id=3]
+[ext_resource path="res://UI/PartyMemberPanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/ItemsTab.cs" type="Script" id=5]
+[ext_resource path="res://UI/PartyMembersList.cs" type="Script" id=6]
+[ext_resource path="res://UI/CharactersTab.cs" type="Script" id=7]
+[ext_resource path="res://UI/PartyMemberDetails.cs" type="Script" id=8]
+[ext_resource path="res://UI/ItemDetails.cs" type="Script" id=9]
+[ext_resource path="res://UI/ItemsList.cs" type="Script" id=10]
+[ext_resource path="res://Assets/Sprites/Characters/The Wall/MP2_Portrait_TheWall.png" type="Texture" id=11]
+[ext_resource path="res://UI/Inventory_default.tres" type="DynamicFont" id=12]
+
+[sub_resource type="Theme" id=2]
+default_font = ExtResource( 12 )
+
+[node name="InventoryUI" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="Container" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tabs" type="TabContainer" parent="Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Characters" type="Tabs" parent="Container/Tabs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 28.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 7 )
+
+[node name="Full Portrait" type="TextureRect" parent="Container/Tabs/Characters"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -411.347
+margin_top = -264.0
+margin_right = 288.653
+margin_bottom = 436.0
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 11 )
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/Tabs/Characters"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/Tabs/Characters/HBoxContainer"]
+margin_right = 400.0
+margin_bottom = 528.0
+
+[node name="PartyMembersList" type="VBoxContainer" parent="Container/Tabs/Characters/HBoxContainer/VBoxContainer"]
+margin_right = 400.0
+margin_bottom = 468.0
+rect_min_size = Vector2( 400, 0 )
+size_flags_vertical = 3
+custom_constants/separation = 10
+script = ExtResource( 6 )
+_partyMemberPanelScene = ExtResource( 4 )
+
+[node name="PartyMemberOptions" type="VBoxContainer" parent="Container/Tabs/Characters/HBoxContainer/VBoxContainer"]
+margin_top = 472.0
+margin_right = 102.0
+margin_bottom = 528.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Button" type="Button" parent="Container/Tabs/Characters/HBoxContainer/VBoxContainer/PartyMemberOptions"]
+margin_right = 102.0
+margin_bottom = 16.0
+text = "EQUIPMENT"
+
+[node name="Button2" type="Button" parent="Container/Tabs/Characters/HBoxContainer/VBoxContainer/PartyMemberOptions"]
+margin_top = 20.0
+margin_right = 102.0
+margin_bottom = 36.0
+text = "SKILLS"
+
+[node name="Button3" type="Button" parent="Container/Tabs/Characters/HBoxContainer/VBoxContainer/PartyMemberOptions"]
+margin_top = 40.0
+margin_right = 102.0
+margin_bottom = 56.0
+text = "BIOGRAPHY"
+
+[node name="PartyMemberDetails" type="HBoxContainer" parent="Container/Tabs/Characters/HBoxContainer"]
+margin_left = 404.0
+margin_right = 976.0
+margin_bottom = 528.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 8 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails"]
+margin_right = 310.0
+margin_bottom = 528.0
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+
+[node name="PartyMemberStats" type="VBoxContainer" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 310.0
+margin_bottom = 528.0
+rect_min_size = Vector2( 300, 0 )
+custom_constants/separation = 15
+
+[node name="Strength" type="HBoxContainer" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats"]
+margin_right = 300.0
+margin_bottom = 10.0
+
+[node name="Header" type="Label" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats/Strength"]
+margin_right = 80.0
+margin_bottom = 10.0
+text = "Strength"
+
+[node name="Value" type="Label" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats/Strength"]
+margin_left = 84.0
+margin_right = 300.0
+margin_bottom = 10.0
+size_flags_horizontal = 3
+text = "9999 / 9999"
+align = 2
+
+[node name="Attack Damage Default" type="HBoxContainer" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats"]
+margin_top = 25.0
+margin_right = 300.0
+margin_bottom = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" type="Label" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats/Attack Damage Default"]
+margin_right = 160.0
+margin_bottom = 23.0
+text = "Attack Damage
+(Default Attack)"
+
+[node name="Value" type="Label" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats/Attack Damage Default"]
+margin_left = 164.0
+margin_top = 6.0
+margin_right = 300.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+text = "999 - 999"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Attack Damage Skill" type="HBoxContainer" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats"]
+margin_top = 63.0
+margin_right = 300.0
+margin_bottom = 86.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" type="Label" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats/Attack Damage Skill"]
+margin_right = 130.0
+margin_bottom = 23.0
+text = "Attack Damage
+(Skill Name)"
+
+[node name="Value" type="Label" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats/Attack Damage Skill"]
+margin_left = 134.0
+margin_top = 6.0
+margin_right = 300.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+text = "999 - 999"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dexterity" type="HBoxContainer" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats"]
+margin_top = 101.0
+margin_right = 300.0
+margin_bottom = 111.0
+
+[node name="Header" type="Label" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats/Dexterity"]
+margin_right = 90.0
+margin_bottom = 10.0
+text = "Dexterity"
+
+[node name="Value" type="Label" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats/Dexterity"]
+margin_left = 94.0
+margin_right = 300.0
+margin_bottom = 10.0
+size_flags_horizontal = 3
+text = "9999 / 9999"
+align = 2
+
+[node name="Attack Rating" type="HBoxContainer" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats"]
+margin_top = 126.0
+margin_right = 300.0
+margin_bottom = 149.0
+
+[node name="Header" type="Label" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats/Attack Rating"]
+margin_right = 130.0
+margin_bottom = 23.0
+text = "Attack Rating
+(Skill Name)"
+
+[node name="Value" type="Label" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats/Attack Rating"]
+margin_left = 134.0
+margin_top = 6.0
+margin_right = 300.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+text = "9999"
+align = 2
+
+[node name="Defense" type="HBoxContainer" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats"]
+margin_top = 164.0
+margin_right = 300.0
+margin_bottom = 174.0
+
+[node name="Header" type="Label" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats/Defense"]
+margin_right = 70.0
+margin_bottom = 10.0
+text = "Defense"
+
+[node name="Value" type="Label" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats/Defense"]
+margin_left = 74.0
+margin_right = 300.0
+margin_bottom = 10.0
+size_flags_horizontal = 3
+text = "9999"
+align = 2
+
+[node name="Energy" type="HBoxContainer" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats"]
+margin_top = 189.0
+margin_right = 300.0
+margin_bottom = 199.0
+
+[node name="Header" type="Label" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats/Energy"]
+margin_right = 60.0
+margin_bottom = 10.0
+text = "Energy"
+
+[node name="Value" type="Label" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats/Energy"]
+margin_left = 64.0
+margin_right = 300.0
+margin_bottom = 10.0
+size_flags_horizontal = 3
+text = "9999 / 9999"
+align = 2
+
+[node name="Mana" type="HBoxContainer" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats"]
+margin_top = 214.0
+margin_right = 300.0
+margin_bottom = 224.0
+
+[node name="Header" type="Label" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats/Mana"]
+margin_right = 40.0
+margin_bottom = 10.0
+text = "Mana"
+
+[node name="Value" type="Label" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats/Mana"]
+margin_left = 44.0
+margin_right = 300.0
+margin_bottom = 10.0
+size_flags_horizontal = 3
+text = "9999 / 9999"
+align = 2
+
+[node name="Vitality" type="HBoxContainer" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats"]
+margin_top = 239.0
+margin_right = 300.0
+margin_bottom = 249.0
+
+[node name="Header" type="Label" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats/Vitality"]
+margin_right = 80.0
+margin_bottom = 10.0
+text = "Vitality"
+
+[node name="Value" type="Label" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats/Vitality"]
+margin_left = 84.0
+margin_right = 300.0
+margin_bottom = 10.0
+size_flags_horizontal = 3
+text = "9999 / 9999"
+align = 2
+
+[node name="Life" type="HBoxContainer" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats"]
+margin_top = 264.0
+margin_right = 300.0
+margin_bottom = 274.0
+
+[node name="Header" type="Label" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats/Life"]
+margin_right = 40.0
+margin_bottom = 10.0
+text = "Life"
+
+[node name="Value" type="Label" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats/Life"]
+margin_left = 44.0
+margin_right = 300.0
+margin_bottom = 10.0
+size_flags_horizontal = 3
+text = "9999 / 9999"
+align = 2
+
+[node name="Stamina" type="HBoxContainer" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats"]
+margin_top = 289.0
+margin_right = 300.0
+margin_bottom = 299.0
+
+[node name="Header" type="Label" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats/Stamina"]
+margin_right = 70.0
+margin_bottom = 10.0
+text = "Stamina"
+
+[node name="Value" type="Label" parent="Container/Tabs/Characters/HBoxContainer/PartyMemberDetails/MarginContainer/PartyMemberStats/Stamina"]
+margin_left = 74.0
+margin_right = 300.0
+margin_bottom = 10.0
+size_flags_horizontal = 3
+text = "9999 / 9999"
+align = 2
+
+[node name="Items" type="Tabs" parent="Container/Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 28.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 5 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/Tabs/Items"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemList" type="ItemList" parent="Container/Tabs/Items/HBoxContainer"]
+margin_right = 486.0
+margin_bottom = 528.0
+size_flags_horizontal = 3
+custom_colors/guide_color = Color( 1, 1, 1, 1 )
+custom_constants/vseparation = 4
+fixed_icon_size = Vector2( 32, 32 )
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemDescriptionPanel" type="Panel" parent="Container/Tabs/Items/HBoxContainer"]
+margin_left = 490.0
+margin_right = 976.0
+margin_bottom = 528.0
+size_flags_horizontal = 3
+
+[node name="ItemDetails" type="VBoxContainer" parent="Container/Tabs/Items/HBoxContainer/ItemDescriptionPanel"]
+anchor_left = -0.00205761
+anchor_right = 0.997942
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+custom_constants/separation = 10
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemName" type="Label" parent="Container/Tabs/Items/HBoxContainer/ItemDescriptionPanel/ItemDetails"]
+margin_right = 465.0
+margin_bottom = 10.0
+
+[node name="ItemDescription" type="RichTextLabel" parent="Container/Tabs/Items/HBoxContainer/ItemDescriptionPanel/ItemDetails"]
+margin_top = 20.0
+margin_right = 465.0
+margin_bottom = 458.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+
+[node name="GridContainer" type="GridContainer" parent="Container/Tabs/Items/HBoxContainer/ItemDescriptionPanel/ItemDetails"]
+margin_top = 468.0
+margin_right = 465.0
+margin_bottom = 508.0
+rect_min_size = Vector2( 0, 40 )
+columns = 2
+
+[node name="ActivateItemButton" type="Button" parent="Container/Tabs/Items/HBoxContainer/ItemDescriptionPanel/ItemDetails/GridContainer"]
+margin_right = 230.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Use"
+
+[node name="DropItemButton" type="Button" parent="Container/Tabs/Items/HBoxContainer/ItemDescriptionPanel/ItemDetails/GridContainer"]
+margin_left = 234.0
+margin_right = 464.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Drop"
+
+[node name="ActivateItemPopup" type="PopupMenu" parent="Container"]
+margin_left = 524.0
+margin_top = 400.0
+margin_right = 754.0
+margin_bottom = 518.0
+custom_constants/vseparation = 14
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Container/Tabs/Items/HBoxContainer/ItemDescriptionPanel/ItemDetails/GridContainer/ActivateItemButton" to="Container/Tabs/Items" method="_on_ActivateItemButton_pressed"]
+[connection signal="index_pressed" from="Container/ActivateItemPopup" to="Container/Tabs/Items" method="_on_ActivateItemPopup_index_pressed"]

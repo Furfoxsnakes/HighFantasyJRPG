@@ -1,0 +1,51 @@
+﻿<Project Sdk="Godot.NET.Sdk/3.2.3">
+  <PropertyGroup>
+    <ProjectGuid>{607DD00C-50D2-4C2B-B967-E1BAD9FCB19F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>HighFantasyJRPG</RootNamespace>
+    <AssemblyName>High Fantasy JRPG</AssemblyName>
+    <GodotProjectGeneratorVersion>1.0.0.0</GodotProjectGeneratorVersion>
+    <TargetFramework>net472</TargetFramework>
+    <!--The following properties were overriden during migration to prevent errors.
+    Enabling them may require other manual changes to the project and its files.-->
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Deterministic>false</Deterministic>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Characters\Character.cs" />
+    <Compile Include="Characters\NPCCharacter.cs" />
+    <Compile Include="Characters\PlayerCharacter.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\Controllers\DialogBox.cs" />
+    <Compile Include="Scripts\Controllers\DialogController.cs" />
+    <Compile Include="Scripts\Enums\StatTypes.cs" />
+    <Compile Include="Scripts\Models\Consumable.cs" />
+    <Compile Include="Scripts\Models\Consumables\HealthPotion.cs" />
+    <Compile Include="Scripts\Models\Consumables\ManaPotion.cs" />
+    <Compile Include="Scripts\Resources\DialogData.cs" />
+    <Compile Include="Scripts\Resources\Inventory.cs" />
+    <Compile Include="Scripts\RayCastAStar.cs" />
+    <Compile Include="Scripts\Resources\CharacterDetails.cs" />
+    <Compile Include="Scripts\Resources\Item.cs" />
+    <Compile Include="Scripts\Resources\NpcDialogData.cs" />
+    <Compile Include="Scripts\Resources\NPCDetails.cs" />
+    <Compile Include="Scripts\ViewModelComponents\Stats.cs" />
+    <Compile Include="UI\CharactersTab.cs" />
+    <Compile Include="UI\DialogOptions.cs" />
+    <Compile Include="UI\InventoryUI.cs" />
+    <Compile Include="UI\ItemDetails.cs" />
+    <Compile Include="UI\ItemsList.cs" />
+    <Compile Include="UI\ItemsTab.cs" />
+    <Compile Include="UI\PartyMemberDetails.cs" />
+    <Compile Include="UI\PartyMemberPanel.cs" />
+    <Compile Include="UI\PartyMembersList.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+</Project>

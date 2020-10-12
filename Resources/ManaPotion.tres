@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Models/Consumables/ManaPotion.cs" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites/Items/brilliant_blue.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+Icon = ExtResource( 2 )
+Name = "Mana Potion"
+PurchaseAmount = 0
+StackSize = 20
+Description = null
+Amount = 50

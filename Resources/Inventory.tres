@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Resources/Inventory.cs" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+Items = {
+Resource( "res://Resources/HealthPotion.tres" ): 10,
+Resource( "res://Resources/ManaPotion.tres" ): 5
+}
