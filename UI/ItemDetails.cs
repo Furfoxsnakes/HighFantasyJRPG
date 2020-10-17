@@ -1,11 +1,9 @@
 using Godot;
-using System;
-using System.Collections.Generic;
 
 public class ItemDetails : Node
 {
-    private Label _itemName;
     private RichTextLabel _itemDescription;
+    private Label _itemName;
 
     public override void _Ready()
     {

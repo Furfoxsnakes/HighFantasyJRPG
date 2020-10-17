@@ -1,22 +1,21 @@
-using Godot;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Array = Godot.Collections.Array;
+using Godot;
+using Godot.Collections;
 
 public class RayCastAStar
 {
-    private List<Vector2> _openSet;
-    private Dictionary<Vector2, Vector2> _cameFrom;
-    private Dictionary<Vector2, int> _gScore;
-    private Dictionary<Vector2, int> _fScore;
-    private List<Vector2> _neighboursMaps = new List<Vector2>();
-    private Physics2DDirectSpaceState _space;
-    private Array _excludes;
-    private int _maxIterations = 1000;
-    private TileMap _tileMap;
     private const int GridSize = 32;
+    private System.Collections.Generic.Dictionary<Vector2, Vector2> _cameFrom;
     private Camera2D _camera;
+    private Array _excludes;
+    private System.Collections.Generic.Dictionary<Vector2, int> _fScore;
+    private System.Collections.Generic.Dictionary<Vector2, int> _gScore;
+    private readonly int _maxIterations = 1000;
+    private List<Vector2> _neighboursMaps = new List<Vector2>();
+    private List<Vector2> _openSet;
+    private readonly Physics2DDirectSpaceState _space;
+    private readonly TileMap _tileMap;
 
     public RayCastAStar(TileMap tileMap, Physics2DDirectSpaceState space)
     {
@@ -25,7 +24,7 @@ public class RayCastAStar
     }
 
     /// <summary>
-    /// Finds the point in the F Scores with the smallest value
+    ///     Finds the point in the F Scores with the smallest value
     /// </summary>
     /// <returns></returns>
     public Vector2 FindSmallestFScore()
@@ -35,34 +34,33 @@ public class RayCastAStar
 
 
         foreach (var point in _openSet)
-        {
             if (_fScore[point] != null && _fScore[point] < smallestScore)
             {
                 smallestScore = _fScore[point];
                 smallestPoint = point;
             }
-        }
 
         return smallestPoint;
     }
 
     /// <summary>
-    /// Uses raycasting to find if neighbours of provided points are valid
+    ///     Uses raycasting to find if neighbours of provided points are valid
     /// </summary>
-    /// <param name="point">The Vector2 from which to find neighbours from<</param>
+    /// <param name="point">
+    ///     The Vector2 from which to find neighbours from<</param>
     /// <returns></returns>
     public List<Vector2> GetNeighbours(Vector2 point)
     {
-        var targets = new Vector2[]
+        var targets = new[]
         {
             point + Vector2.Up,
             point + Vector2.Right,
             point + Vector2.Down,
             point + Vector2.Left,
-            point + new Vector2(1, 1),    //down right
-            point + new Vector2(1, -1),    // up right
-            point + new Vector2(-1, 1),    // down left
-            point + new Vector2(-1, -1)    // up left
+            point + new Vector2(1, 1), //down right
+            point + new Vector2(1, -1), // up right
+            point + new Vector2(-1, 1), // down left
+            point + new Vector2(-1, -1) // up left
         };
 
         var validTargets = new List<Vector2>();
@@ -71,10 +69,7 @@ public class RayCastAStar
         {
             var result = _space.IntersectRay(MapToWorld(point), MapToWorld(target), _excludes);
             // see if there's anything there then add it to the list of valid points
-            if (result.Count == 0)
-            {
-                validTargets.Add(target);
-            }
+            if (result.Count == 0) validTargets.Add(target);
         }
 
         return validTargets;
@@ -105,22 +100,22 @@ public class RayCastAStar
         start = _tileMap.WorldToMap(start);
         end = _tileMap.WorldToMap(end);
 
-        _cameFrom = new Dictionary<Vector2, Vector2>();
-        _gScore = new Dictionary<Vector2, int>();
-        _fScore = new Dictionary<Vector2, int>();
-        _openSet = new List<Vector2>()
+        _cameFrom = new System.Collections.Generic.Dictionary<Vector2, Vector2>();
+        _gScore = new System.Collections.Generic.Dictionary<Vector2, int>();
+        _fScore = new System.Collections.Generic.Dictionary<Vector2, int>();
+        _openSet = new List<Vector2>
         {
             start
         };
 
         _gScore[start] = 0;
-        _fScore[start] = (int)end.DistanceTo(start);
-        
+        _fScore[start] = (int) end.DistanceTo(start);
+
         // Visit each point while open set has data and haven't reached max iterations
         while (_openSet.Count > 0 && iteration < _maxIterations)
         {
             var current = FindSmallestFScore();
-            
+
             // goal was reached so send back the reconstructed path
             if (current == end)
                 return ReconstructPath(current);
@@ -142,8 +137,8 @@ public class RayCastAStar
                     _cameFrom[neighbour] = current;
                     _gScore[neighbour] = tentativeGScore;
 
-                    _fScore[neighbour] = tentativeGScore + (int)end.DistanceTo(neighbour);
-                    
+                    _fScore[neighbour] = tentativeGScore + (int) end.DistanceTo(neighbour);
+
                     if (!_openSet.Contains(neighbour))
                         _openSet.Add(neighbour);
                 }
@@ -151,7 +146,7 @@ public class RayCastAStar
 
             iteration++;
         }
-        
+
         // else we couldn't find a path
         return null;
     }

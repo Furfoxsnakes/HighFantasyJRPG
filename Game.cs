@@ -1,15 +1,13 @@
-using Godot;
-using System;
 using System.Collections.Generic;
-using System.Linq;
+using Godot;
 
 public class Game : Node
 {
-    public PlayerCharacter Player;
+    [Export] public Inventory Inventory;
     public InventoryUI InventoryUI;
 
     [Export] public List<CharacterDetails> PartyMembers;
-    [Export] public Inventory Inventory;
+    public PlayerCharacter Player;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -21,10 +19,8 @@ public class Game : Node
     public override void _Input(InputEvent @event)
     {
         if (@event is InputEventKey key)
-        {
             if (Input.IsActionJustPressed("ToggleInventory"))
                 ToggleInventory();
-        }
     }
 
     public void ToggleInventory()

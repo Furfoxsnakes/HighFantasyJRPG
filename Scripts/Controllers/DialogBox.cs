@@ -1,14 +1,12 @@
-using Godot;
-using System;
 using System.Collections;
-using System.Linq;
+using Godot;
 
 public class DialogBox : Control
 {
+    private Control _indicator;
     private Label _speakerName;
     private RichTextLabel _text;
-    private Control _indicator;
-    
+
     public override void _Ready()
     {
         _speakerName = GetNode<Label>("SpeakerName");

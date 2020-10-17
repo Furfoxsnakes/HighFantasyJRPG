@@ -1,17 +1,16 @@
-using Godot;
-using System;
 using System.Linq;
+using Godot;
 
 public class ItemsTab : Tabs
 {
-    private Game _game;
-    private ItemsList _itemsList;
-    private ItemDetails _itemDetails;
     private PopupMenu _activateItemPopup;
-    
+    private Game _game;
+
     private Inventory _inventory;
-    private int _selectedItemId = 0;
+    private ItemDetails _itemDetails;
+    private ItemsList _itemsList;
     private Item _selectedItem;
+    private int _selectedItemId;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -47,13 +46,10 @@ public class ItemsTab : Tabs
             _activateItemPopup.Hide();
         else
             _activateItemPopup.Show();
-        
+
         _activateItemPopup.Clear();
 
-        foreach (var partyMember in _game.PartyMembers)
-        {
-            _activateItemPopup.AddItem(partyMember.Name);
-        }
+        foreach (var partyMember in _game.PartyMembers) _activateItemPopup.AddItem(partyMember.Name);
     }
 
     private void _on_ActivateItemPopup_index_pressed(int index)
@@ -61,13 +57,13 @@ public class ItemsTab : Tabs
         var character = _game.PartyMembers[index];
         ActivateSelectedItem(character);
     }
-    
+
     private void ActivateSelectedItem(CharacterDetails character)
     {
         if (_selectedItem.Activate(character))
         {
             GD.Print($"{_selectedItem.Name} used successfully on {character.Name}");
-            
+
             _inventory.Items[_selectedItem]--;
             if (_inventory.Items[_selectedItem] == 0)
             {
@@ -75,6 +71,7 @@ public class ItemsTab : Tabs
                 _selectedItem = null;
                 _selectedItemId = _selectedItemId == 0 ? 0 : _selectedItemId - 1;
             }
+
             _itemsList.PopulateItems(_selectedItemId);
         }
         else

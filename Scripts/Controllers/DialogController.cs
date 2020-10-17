@@ -1,30 +1,28 @@
-using Godot;
 using System.Collections;
 using System.Collections.Generic;
+using Godot;
 using HighFantasyJRPG.Scripts.Resources;
 using Newtonsoft.Json;
 
 public class DialogController : Node
 {
-    public static DialogController Instance => _instance;
-    private static DialogController _instance;
-    
     private const string _dialogDataFolderPath = "res://Resources/DialogData";
+    private IEnumerator _dialog;
 
     private DialogBox _dialogBox;
     private DialogOptions _dialogOptions;
-    private IEnumerator _dialog;
-    private string _speakerName;
-    private string _portraitPath;
     private NpcDialogData _npcDialogData;
+    private string _portraitPath;
+    private string _speakerName;
+    public static DialogController Instance { get; private set; }
 
     public override void _Ready()
     {
-        if (_instance == null)
-            _instance = this;
+        if (Instance == null)
+            Instance = this;
         else
             QueueFree();
-        
+
         _dialogBox = GetNode<DialogBox>("DialogBox");
         _dialogOptions = GetNode<DialogOptions>("DialogOptions");
 
@@ -41,13 +39,13 @@ public class DialogController : Node
 
     private IEnumerator Sequence(DialogData data)
     {
-        var presenter = _dialogBox.Display(_speakerName,data);
+        var presenter = _dialogBox.Display(_speakerName, data);
         presenter.MoveNext();
         yield return null;
-        
+
         while (presenter.MoveNext())
             yield return null;
-        
+
         EndDialog();
     }
 
@@ -91,32 +89,32 @@ public class DialogController : Node
         _dialogOptions.Visible = false;
         DisplayDialog(id);
     }
-    
+
     private NpcDialogData loadDialogData(string path)
     {
         var file = new File();
         var error = file.Open($"{_dialogDataFolderPath}/{path}.json", File.ModeFlags.Read);
-        
+
         if (error != Error.Ok)
         {
             GD.PrintErr("There was an error opening the file. Please try again.");
             return null;
         }
-        
+
         var json = file.GetAsText();
         file.Close();
-        
+
         return JsonConvert.DeserializeObject<NpcDialogData>(json);
     }
 
     private void SaveData(string name)
     {
-        var npcData = new NpcDialogData()
+        var npcData = new NpcDialogData
         {
             Name = name,
-            Dialog = new List<DialogData>()
+            Dialog = new List<DialogData>
             {
-                new DialogData(){Name = "Quest title", Messages = new List<string>(){"This is some quest text"}}
+                new DialogData {Name = "Quest title", Messages = new List<string> {"This is some quest text"}}
             }
         };
 

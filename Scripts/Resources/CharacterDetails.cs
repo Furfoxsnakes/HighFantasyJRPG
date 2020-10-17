@@ -1,10 +1,7 @@
 using Godot;
-using System;
-using System.Collections.Generic;
 
 public class CharacterDetails : Resource
 {
-
     #region Stats
 
     [Export] public string Name;
@@ -28,7 +25,7 @@ public class CharacterDetails : Resource
     }
 
     private int _HP;
-    
+
     [Export] public int MMP;
 
     [Export]
@@ -42,6 +39,7 @@ public class CharacterDetails : Resource
             EmitSignal(nameof(MPChanged), _MP);
         }
     }
+
     private int _MP;
     [Export] public int STR;
     [Export] public int DEX;
@@ -59,5 +57,4 @@ public class CharacterDetails : Resource
     public delegate void MPChanged(int newValue);
 
     #endregion
-
 }

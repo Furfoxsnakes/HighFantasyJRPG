@@ -1,11 +1,11 @@
-using Godot;
 using System.Collections.Generic;
+using Godot;
 
 public class PlayerCharacter : Character
 {
-    [Export] public List<Item> InventoryList = new List<Item>();
-    [Export] public Dictionary<Item, int> InventoryDict = new Dictionary<Item, int>();
     [Export] public bool CanMove = true;
+    [Export] public Dictionary<Item, int> InventoryDict = new Dictionary<Item, int>();
+    [Export] public List<Item> InventoryList = new List<Item>();
 
     public override void _Input(InputEvent @event)
     {
@@ -21,16 +21,13 @@ public class PlayerCharacter : Character
     {
         base._Process(delta);
         if (!CanMove) return;
-        
+
         // WASD movement
         //var movement = new Vector2();
         Velocity.x = Input.GetActionStrength("MoveRight") - Input.GetActionStrength("MoveLeft");
         Velocity.y = Input.GetActionStrength("MoveDown") - Input.GetActionStrength("MoveUp");
 
-        if (Velocity != Vector2.Zero)
-        {
-            Direction = Velocity;
-        }
+        if (Velocity != Vector2.Zero) Direction = Velocity;
     }
 
     public override void _Ready()
@@ -44,7 +41,7 @@ public class PlayerCharacter : Character
     }
 
     /// <summary>
-    /// Adds an <see cref="Item"/> to the player's inventory
+    ///     Adds an <see cref="Item" /> to the player's inventory
     /// </summary>
     /// <param name="item">Item to be assed</param>
     /// <returns>True if the item was successfully added</returns>
@@ -57,11 +54,14 @@ public class PlayerCharacter : Character
                 GD.Print($"Already at max stack for {item.Name}.");
                 return false;
             }
+
             InventoryDict[item]++;
         }
         else
+        {
             InventoryDict.Add(item, 1);
-        
+        }
+
         return true;
     }
 }

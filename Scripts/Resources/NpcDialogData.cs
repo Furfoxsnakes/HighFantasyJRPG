@@ -4,8 +4,8 @@ namespace HighFantasyJRPG.Scripts.Resources
 {
     public class NpcDialogData
     {
+        public List<DialogData> Dialog;
         public string Name;
         public string PortraitPath;
-        public List<DialogData> Dialog;
     }
 }

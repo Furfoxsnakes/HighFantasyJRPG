@@ -1,7 +1,6 @@
-using Godot;
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using Godot;
 
 public class ItemsList : ItemList
 {
@@ -18,7 +17,7 @@ public class ItemsList : ItemList
         Clear();
 
         if (_game.Inventory.Items.Count <= 0) return;
-        
+
         KeyValuePair<Item, int> item;
         for (var i = 0; i < _game.Inventory.Items.Count; ++i)
         {

@@ -1,15 +1,13 @@
 using Godot;
-using System;
 
 public class PartyMembersList : Node
 {
-    
-    [Export]
-    private PackedScene _partyMemberPanelScene;
-    private Game _game;
-
     [Signal]
     public delegate void PartyMemberSelected(int id);
+
+    private Game _game;
+
+    [Export] private PackedScene _partyMemberPanelScene;
 
     public PartyMemberPanel this[int index] => GetChild<PartyMemberPanel>(index);
 
@@ -36,16 +34,13 @@ public class PartyMembersList : Node
         // out of bounds check
         if (selectedPartyMemberId >= GetChildCount())
             selectedPartyMemberId = 0;
-        
+
         SelectPartyMember(selectedPartyMemberId);
     }
 
     public void SelectPartyMember(int memberId)
     {
-        for (var i = 0; i < GetChildCount(); ++i)
-        {
-            this[i].Pressed = i == memberId;
-        }
+        for (var i = 0; i < GetChildCount(); ++i) this[i].Pressed = i == memberId;
         EmitSignal(nameof(PartyMemberSelected), memberId);
     }
 
@@ -56,9 +51,6 @@ public class PartyMembersList : Node
 
     public void Clear()
     {
-        foreach (Node child in GetChildren())
-        {
-            child.QueueFree();
-        }
+        foreach (Node child in GetChildren()) child.QueueFree();
     }
 }

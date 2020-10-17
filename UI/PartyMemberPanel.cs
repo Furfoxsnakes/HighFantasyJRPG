@@ -1,23 +1,22 @@
 using Godot;
-using System;
 
 public class PartyMemberPanel : Button
 {
-    [Export] public NodePath LevelLabelPath;
-    [Export] public NodePath NameLabelPath;
-    [Export] public NodePath ExpProgressPath;
-    [Export] public NodePath ExpLabelPath;
-    [Export] public NodePath HpProgressPath;
-    [Export] public NodePath HpLabelPath;
-    [Export] public NodePath MpProgressPath;
-    [Export] public NodePath MpLabelPath;
-    [Export] public NodePath PortraitPath;
-
-    public int Index;
-    public CharacterDetails CharacterDetails;
-
     [Signal]
     public delegate void PartyMemberSelected(int selectedId);
+
+    public CharacterDetails CharacterDetails;
+    [Export] public NodePath ExpLabelPath;
+    [Export] public NodePath ExpProgressPath;
+    [Export] public NodePath HpLabelPath;
+    [Export] public NodePath HpProgressPath;
+
+    public int Index;
+    [Export] public NodePath LevelLabelPath;
+    [Export] public NodePath MpLabelPath;
+    [Export] public NodePath MpProgressPath;
+    [Export] public NodePath NameLabelPath;
+    [Export] public NodePath PortraitPath;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()

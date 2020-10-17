@@ -1,15 +1,14 @@
 using Godot;
-using System;
 
 public class PartyMemberDetails : Node
 {
-    private Label _strengthLabel;
     private Label _dexterityLabel;
     private Label _energyLabel;
-    private Label _staminaLabel;
+    private TextureRect _fullPortrait;
     private Label _lifeLabel;
     private Label _manaLabel;
-    private TextureRect _fullPortrait;
+    private Label _staminaLabel;
+    private Label _strengthLabel;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()

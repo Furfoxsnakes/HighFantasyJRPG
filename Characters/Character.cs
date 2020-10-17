@@ -1,24 +1,24 @@
-using Godot;
 using System.Collections.Generic;
-using Array = Godot.Collections.Array;
+using Godot;
+using Godot.Collections;
 
 public class Character : KinematicBody2D
 {
     protected const int SPEED = 150;
-    protected Game Game;
-    protected Vector2 Velocity;
-    protected Vector2 Direction = Vector2.Down;
+
+    private AnimationPlayer _anim;
+    private AnimationNodeStateMachinePlayback _animStateMachine;
+    private AnimationTree _animTree;
     protected Character CollidedCharacter;
-    protected List<Vector2> Path = new List<Vector2>();
+    protected Vector2 Direction = Vector2.Down;
+    protected Game Game;
     protected TileMap GroundMap;
+    protected List<Vector2> Path = new List<Vector2>();
 
     protected RayCastAStar RayCastAStar;
 
     public Stats Stats;
-
-    private AnimationPlayer _anim;
-    private AnimationTree _animTree;
-    private AnimationNodeStateMachinePlayback _animStateMachine;
+    protected Vector2 Velocity;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -30,9 +30,9 @@ public class Character : KinematicBody2D
         Game = GetTree().Root.GetNode<Game>("Game");
         GroundMap = Game.GetNode<TileMap>("Ground");
         Stats = GetNode<Stats>("Stats");
-        
+
         RayCastAStar = new RayCastAStar(GroundMap, GetWorld2d().DirectSpaceState);
-        
+
         _animTree.Active = true;
     }
 
@@ -40,7 +40,7 @@ public class Character : KinematicBody2D
     {
         Move(delta);
     }
-    
+
     protected void Move(float delta)
     {
         if (Velocity != Vector2.Zero)
@@ -65,7 +65,7 @@ public class Character : KinematicBody2D
             _animStateMachine.Travel("Idle");
             return;
         }
-        
+
         _animStateMachine.Travel("Walk");
 
         var distanceToNext = Position.DistanceTo(Path[0]);
@@ -80,7 +80,6 @@ public class Character : KinematicBody2D
         else
         {
             Path.RemoveAt(0);
-            
         }
     }
 
@@ -94,7 +93,6 @@ public class Character : KinematicBody2D
 
     protected void MoveToTarget(Vector2 target)
     {
-
         var exclude = new Array {this};
 
         var results = RayCastAStar.Path(GlobalPosition, target, exclude);

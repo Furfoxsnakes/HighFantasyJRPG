@@ -1,5 +1,4 @@
 using Godot;
-using System;
 using HighFantasyJRPG.Scripts.Resources;
 
 public class DialogOptions : ItemList
@@ -9,9 +8,6 @@ public class DialogOptions : ItemList
         Clear();
         Visible = true;
 
-        foreach (var option in data.Dialog)
-        {
-            AddItem(option.Name);
-        }
+        foreach (var option in data.Dialog) AddItem(option.Name);
     }
 }
