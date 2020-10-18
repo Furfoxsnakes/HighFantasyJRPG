@@ -24,12 +24,6 @@ public class PartyMemberDetails : Node
 
     public void DisplayCharacterDetails(CharacterDetails details)
     {
-        _lifeLabel.Text = $"{details.HP} / {details.MHP}";
-        _manaLabel.Text = $"{details.MP} / {details.MMP}";
-        _strengthLabel.Text = details.STR.ToString();
-        _dexterityLabel.Text = details.DEX.ToString();
-        _energyLabel.Text = details.NRG.ToString();
-        _staminaLabel.Text = details.STA.ToString();
-        _fullPortrait.Texture = details.CharacterFull;
+        
     }
 }

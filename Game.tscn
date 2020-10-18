@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Characters/PlayerCharacter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Sprites/Terrain/New_Tilemap_(32x32)/New_Tileset_(32x32).png" type="Texture" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Characters/Blacksmith.tscn" type="PackedScene" id=11]
 [ext_resource path="res://UI/Dialog.tscn" type="PackedScene" id=12]
 [ext_resource path="res://UI/Inventory_default.tres" type="DynamicFont" id=13]
+[ext_resource path="res://Characters/PartyMember.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scripts/Controllers/PartyController.cs" type="Script" id=15]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Grass"
@@ -107,7 +109,6 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 32, 64, 32 )
 
 [node name="Game" type="Node"]
 script = ExtResource( 4 )
-PartyMembers = [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ]
 Inventory = ExtResource( 10 )
 
 [node name="Tips" type="CanvasLayer" parent="."]
@@ -157,24 +158,25 @@ format = 1
 position = Vector2( 516.169, 301.16 )
 current = true
 
+[node name="Party" type="Node" parent="."]
+script = ExtResource( 15 )
+Party = [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ]
+_partyMemberScene = ExtResource( 14 )
+
 [node name="Characters" type="YSort" parent="."]
-
-[node name="PlayerCharacter" parent="Characters" instance=ExtResource( 1 )]
-position = Vector2( 518.414, 301.16 )
-InventoryDict = {
-Resource( "res://Resources/HealthPotion.tres" ): 1,
-Resource( "res://Resources/ManaPotion.tres" ): 10
-}
-
-[node name="AnimationTree" parent="Characters/PlayerCharacter" index="1"]
-parameters/playback = SubResource( 5 )
-
-[node name="RemoteTransform2D" parent="Characters/PlayerCharacter" index="5"]
-remote_path = NodePath("../../../Camera2D")
 
 [node name="Blacksmith" parent="Characters" instance=ExtResource( 11 )]
 position = Vector2( 512.474, 127.108 )
 DialogDataFilename = "BlacksmithDialogData"
+
+[node name="PlayerCharacter" parent="Characters" instance=ExtResource( 1 )]
+position = Vector2( 520.95, 287.087 )
+InventoryDict = {
+Resource( "res://Resources/HealthPotion.tres" ): 1
+}
+
+[node name="AnimationTree" parent="Characters/PlayerCharacter" index="1"]
+parameters/playback = SubResource( 5 )
 
 [node name="Dialog" parent="." instance=ExtResource( 12 )]
 

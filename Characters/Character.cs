@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Godot;
 using Godot.Collections;
+using HighFantasyJRPG.Scripts.ViewModelComponents;
 
 public class Character : KinematicBody2D
 {
@@ -15,9 +16,10 @@ public class Character : KinematicBody2D
     protected TileMap GroundMap;
     protected List<Vector2> Path = new List<Vector2>();
 
+    // components
+    [Export] public CharacterDetails CharacterDetails;
     protected RayCastAStar RayCastAStar;
-
-    public Stats Stats;
+    
     protected Vector2 Velocity;
 
     // Called when the node enters the scene tree for the first time.
@@ -29,7 +31,6 @@ public class Character : KinematicBody2D
 
         Game = GetTree().Root.GetNode<Game>("Game");
         GroundMap = Game.GetNode<TileMap>("Ground");
-        Stats = GetNode<Stats>("Stats");
 
         RayCastAStar = new RayCastAStar(GroundMap, GetWorld2d().DirectSpaceState);
 
@@ -40,6 +41,8 @@ public class Character : KinematicBody2D
     {
         Move(delta);
     }
+
+    #region Movement
 
     protected void Move(float delta)
     {
@@ -104,4 +107,7 @@ public class Character : KinematicBody2D
     }
 
     #endregion
+
+    #endregion
+    
 }

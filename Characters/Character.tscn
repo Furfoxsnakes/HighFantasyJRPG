@@ -1,7 +1,6 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Characters/Character.cs" type="Script" id=1]
-[ext_resource path="res://Scripts/ViewModelComponents/Stats.cs" type="Script" id=2]
 
 [sub_resource type="AnimationNodeAnimation" id=1]
 animation = "IdleSouth"
@@ -118,6 +117,3 @@ parameters/Walk/blend_position = Vector2( 0, 0 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-
-[node name="Stats" type="Node" parent="."]
-script = ExtResource( 2 )

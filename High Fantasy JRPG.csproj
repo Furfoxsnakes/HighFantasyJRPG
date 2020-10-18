@@ -26,7 +26,19 @@
     <Compile Include="Scripts\Common\NotificationExtensions.cs" />
     <Compile Include="Scripts\Controllers\DialogBox.cs" />
     <Compile Include="Scripts\Controllers\DialogController.cs" />
+    <Compile Include="Scripts\Controllers\ExperienceManager.cs" />
+    <Compile Include="Scripts\Controllers\PartyController.cs" />
+    <Compile Include="Scripts\Controllers\PartyMember.cs" />
     <Compile Include="Scripts\Enums\StatTypes.cs" />
+    <Compile Include="Scripts\Exceptions\Modifiers\AddValueModifier.cs" />
+    <Compile Include="Scripts\Exceptions\Modifiers\ClampValueModifier.cs" />
+    <Compile Include="Scripts\Exceptions\Modifiers\MaxValueModifier.cs" />
+    <Compile Include="Scripts\Exceptions\Modifiers\MinValueModifier.cs" />
+    <Compile Include="Scripts\Exceptions\Modifiers\Modifier.cs" />
+    <Compile Include="Scripts\Exceptions\Modifiers\MultiplyValueModifier.cs" />
+    <Compile Include="Scripts\Exceptions\Modifiers\ValueModifier.cs" />
+    <Compile Include="Scripts\Exceptions\ValueChangeException.cs" />
+    <Compile Include="Scripts\Exceptions\BaseException.cs" />
     <Compile Include="Scripts\Models\Consumable.cs" />
     <Compile Include="Scripts\Models\Consumables\HealthPotion.cs" />
     <Compile Include="Scripts\Models\Consumables\ManaPotion.cs" />
@@ -37,6 +49,7 @@
     <Compile Include="Scripts\Resources\Item.cs" />
     <Compile Include="Scripts\Resources\NpcDialogData.cs" />
     <Compile Include="Scripts\Resources\NPCDetails.cs" />
+    <Compile Include="Scripts\ViewModelComponents\Rank.cs" />
     <Compile Include="Scripts\ViewModelComponents\Stats.cs" />
     <Compile Include="UI\CharactersTab.cs" />
     <Compile Include="UI\DialogOptions.cs" />

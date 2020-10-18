@@ -6,16 +6,7 @@
 
 [resource]
 script = ExtResource( 3 )
-HP = 100
-MP = 50
 Name = "Sarae The Red"
 CharacterPortrait = ExtResource( 1 )
 CharacterFull = ExtResource( 2 )
-LVL = 1
-EXP = 0
-MHP = 100
-MMP = 50
-STR = 5
-DEX = 5
-NRG = 5
-STA = 5
+_data = PoolIntArray( 1, 0, 0, 0, 0, 0, 0, 0, 0 )

@@ -2,10 +2,6 @@ using Godot;
 
 public class CharactersTab : Tabs
 {
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
-
     private Game _game;
     private PartyMemberDetails _partyMemberDetails;
 
@@ -21,12 +17,18 @@ public class CharactersTab : Tabs
         _partyMemberDetails = GetNode<PartyMemberDetails>("HBoxContainer/PartyMemberDetails");
 
         _partyMembersList.Connect("PartyMemberSelected", this, nameof(OnPartyMemberSelected));
-        _partyMembersList.UpdatePartyMembers();
+        //_partyMembersList.UpdatePartyMembers();
     }
 
     private void OnPartyMemberSelected(int selectedId)
     {
         var partyMemberDetails = _partyMembersList[selectedId].CharacterDetails;
         _partyMemberDetails.DisplayCharacterDetails(partyMemberDetails);
+    }
+
+    private void _on_Characters_visibility_changed()
+    {
+        if (Visible == true)
+            _partyMembersList.UpdatePartyMembers();
     }
 }

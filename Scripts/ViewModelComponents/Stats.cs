@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Godot;
+using HighFantasyJRPG.Scripts.Exceptions;
 
 public class Stats : Node
 {

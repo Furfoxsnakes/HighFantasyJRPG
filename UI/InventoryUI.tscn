@@ -11,7 +11,7 @@
 [ext_resource path="res://Assets/Sprites/Characters/The Wall/MP2_Portrait_TheWall.png" type="Texture" id=11]
 [ext_resource path="res://UI/Inventory_default.tres" type="DynamicFont" id=12]
 
-[sub_resource type="Theme" id=2]
+[sub_resource type="Theme" id=1]
 default_font = ExtResource( 12 )
 
 [node name="InventoryUI" type="CanvasLayer"]
@@ -21,7 +21,7 @@ script = ExtResource( 3 )
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = SubResource( 2 )
+theme = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -436,5 +436,6 @@ custom_constants/vseparation = 14
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="visibility_changed" from="Container/Tabs/Characters" to="Container/Tabs/Characters" method="_on_Characters_visibility_changed"]
 [connection signal="pressed" from="Container/Tabs/Items/HBoxContainer/ItemDescriptionPanel/ItemDetails/GridContainer/ActivateItemButton" to="Container/Tabs/Items" method="_on_ActivateItemButton_pressed"]
 [connection signal="index_pressed" from="Container/ActivateItemPopup" to="Container/Tabs/Items" method="_on_ActivateItemPopup_index_pressed"]

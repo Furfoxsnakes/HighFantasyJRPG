@@ -10,27 +10,31 @@ namespace HighFantasyJRPG.Scripts.ViewModelComponents
         public const int MAX_LEVEL = 100;
         public const int MAX_EXPERIENCE = 9999999;
 
-        public int LVL => _stats[StatTypes.LVL];
+        public int LVL => _details[StatTypes.LVL];
 
         public float LevelPercent => (float) (LVL - MIN_LEVEL) / (MAX_LEVEL - MIN_LEVEL);
 
         public int EXP
         {
-            get => _stats[StatTypes.EXP];
-            set => _stats[StatTypes.EXP] = value;
+            get => _details[StatTypes.EXP];
+            set => _details[StatTypes.EXP] = value;
         }
         
-        private Stats _stats;
+        private CharacterDetails _details;
 
         public override void _Ready()
         {
-            _stats = Owner.GetNode<Stats>("Stats");
+            _details = (Owner as Character).CharacterDetails;
         }
 
         public override void _EnterTree()
         {
-            this.AddObserver(OnExpWillChange, Stats.WillChangeNotification(StatTypes.EXP), _stats);
-            this.AddObserver(OnExpDidChange, Stats.DidChangeNotification(StatTypes.EXP), _stats);
+            
+        }
+
+        public override void _ExitTree()
+        {
+            
         }
 
         private void OnExpWillChange(object sender, object args)
@@ -41,7 +45,23 @@ namespace HighFantasyJRPG.Scripts.ViewModelComponents
         
         private void OnExpDidChange(object sender, object args)
         {
-            
+            // update the LVL stat when the character receives new EXP
+            _details.SetValue(StatTypes.LVL, LevelForExperience(EXP), false);
+        }
+
+        public static int ExperienceForLevel(int lvl)
+        {
+            var levelPercent = (float) (lvl - MIN_LEVEL) / (MAX_LEVEL - MIN_LEVEL);
+            return (int)EasingEquations.EaseInQuad(0, MAX_EXPERIENCE, levelPercent);
+        }
+
+        public static int LevelForExperience(int exp)
+        {
+            var lvl = MAX_LEVEL;
+            for (; lvl >= MIN_LEVEL; --lvl)
+                if (exp >= ExperienceForLevel(lvl))
+                    break;
+            return lvl;
         }
     }
 }

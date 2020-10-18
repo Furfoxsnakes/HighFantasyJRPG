@@ -16,14 +16,14 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-LevelLabelPath = NodePath("HBoxContainer/GridContainer/NameLevel/LevelLabel")
-NameLabelPath = NodePath("HBoxContainer/GridContainer/NameLevel/NameLabel")
-ExpProgressPath = NodePath("HBoxContainer/GridContainer/Experience/ExperienceBar")
 ExpLabelPath = NodePath("HBoxContainer/GridContainer/Experience/ExperienceBar/HBoxContainer/XP Label")
-HpProgressPath = NodePath("HBoxContainer/GridContainer/Health/HealthBar")
+ExpProgressPath = NodePath("HBoxContainer/GridContainer/Experience/ExperienceBar")
 HpLabelPath = NodePath("HBoxContainer/GridContainer/Health/HealthBar/HBoxContainer/HP Label")
-MpProgressPath = NodePath("HBoxContainer/GridContainer/Mana/ManaBar")
+HpProgressPath = NodePath("HBoxContainer/GridContainer/Health/HealthBar")
+LevelLabelPath = NodePath("HBoxContainer/GridContainer/NameLevel/LevelLabel")
 MpLabelPath = NodePath("HBoxContainer/GridContainer/Mana/ManaBar/HBoxContainer/MP Label")
+MpProgressPath = NodePath("HBoxContainer/GridContainer/Mana/ManaBar")
+NameLabelPath = NodePath("HBoxContainer/GridContainer/NameLevel/NameLabel")
 PortraitPath = NodePath("HBoxContainer/Control/TextureRect")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

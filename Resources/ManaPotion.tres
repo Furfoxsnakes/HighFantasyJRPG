@@ -5,9 +5,9 @@
 
 [resource]
 script = ExtResource( 1 )
+Description = null
 Icon = ExtResource( 2 )
 Name = "Mana Potion"
 PurchaseAmount = 0
 StackSize = 20
-Description = null
 Amount = 50

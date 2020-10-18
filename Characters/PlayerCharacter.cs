@@ -36,8 +36,7 @@ public class PlayerCharacter : Character
 
         var healthPotion = ResourceLoader.Load<Item>("res://Resources/HealthPotion.tres");
         AddItemToInventory(healthPotion);
-
-        Stats[StatTypes.HP] = 10;
+        
     }
 
     /// <summary>

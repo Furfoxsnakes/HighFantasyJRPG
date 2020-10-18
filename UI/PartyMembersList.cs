@@ -20,13 +20,15 @@ public class PartyMembersList : Node
     public void UpdatePartyMembers(int selectedPartyMemberId = 0)
     {
         Clear();
-        if (_game.PartyMembers.Count == 0) return;
+        var partyMembers = _game.PartyController.Party;
 
-        for (var i = 0; i < _game.PartyMembers.Count; ++i)
+        if (partyMembers.Count == 0) return;
+        
+        for (var i = 0; i < partyMembers.Count; ++i)
         {
             var panelInstance = _partyMemberPanelScene.Instance() as PartyMemberPanel;
             panelInstance.Index = i;
-            panelInstance.CharacterDetails = _game.PartyMembers[i];
+            panelInstance.CharacterDetails = partyMembers[i];
             panelInstance.Connect("PartyMemberSelected", this, nameof(OnPartyMemberSelected));
             AddChild(panelInstance);
         }

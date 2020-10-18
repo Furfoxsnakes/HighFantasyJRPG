@@ -49,12 +49,12 @@ public class ItemsTab : Tabs
 
         _activateItemPopup.Clear();
 
-        foreach (var partyMember in _game.PartyMembers) _activateItemPopup.AddItem(partyMember.Name);
+        foreach (var partyMember in _game.PartyController.Party) _activateItemPopup.AddItem(partyMember.Name);
     }
 
     private void _on_ActivateItemPopup_index_pressed(int index)
     {
-        var character = _game.PartyMembers[index];
+        var character = _game.PartyController.Party[index];
         ActivateSelectedItem(character);
     }
 

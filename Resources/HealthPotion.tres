@@ -5,9 +5,9 @@
 
 [resource]
 script = ExtResource( 1 )
+Description = "Restores 50 HP to a single Character"
 Icon = ExtResource( 2 )
 Name = "Health Potion"
 PurchaseAmount = 50
 StackSize = 20
-Description = "Restores 50 HP to a single Character"
 Amount = 50

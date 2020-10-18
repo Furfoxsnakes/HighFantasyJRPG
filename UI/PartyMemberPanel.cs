@@ -31,9 +31,9 @@ public class PartyMemberPanel : Button
         GetNode<ProgressBar>(ExpProgressPath).Value = 0.5f;
         GetNode<Label>(ExpLabelPath).Text = $"{CharacterDetails.EXP}";
         GetNode<ProgressBar>(HpProgressPath).Value = 0.5f;
-        GetNode<Label>(HpLabelPath).Text = $"{CharacterDetails.HP}/{CharacterDetails.MHP}";
+        GetNode<Label>(HpLabelPath).Text = $"{CharacterDetails[StatTypes.HP]}/{CharacterDetails[StatTypes.MHP]}";
         GetNode<ProgressBar>(MpProgressPath).Value = 0.5f;
-        GetNode<Label>(MpLabelPath).Text = $"{CharacterDetails.MP}/{CharacterDetails.MMP}";
+        GetNode<Label>(MpLabelPath).Text = $"{CharacterDetails[StatTypes.MP]}/{CharacterDetails[StatTypes.MMP]}";
         GetNode<TextureRect>(PortraitPath).Texture = CharacterDetails.CharacterPortrait;
     }
 
