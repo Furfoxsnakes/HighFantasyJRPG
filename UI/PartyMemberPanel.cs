@@ -24,6 +24,48 @@ public class PartyMemberPanel : Button
         Init();
     }
 
+    public override void _EnterTree()
+    {
+        this.AddObserver(OnHealthChanged, CharacterDetails.DidChangeNotification(StatTypes.HP), CharacterDetails);
+        this.AddObserver(OnHealthChanged, CharacterDetails.DidChangeNotification(StatTypes.MHP), CharacterDetails);
+        this.AddObserver(OnManaChanged, CharacterDetails.DidChangeNotification(StatTypes.MP), CharacterDetails);
+        this.AddObserver(OnManaChanged, CharacterDetails.DidChangeNotification(StatTypes.MMP), CharacterDetails);
+        this.AddObserver(OnExpChanged, CharacterDetails.DidChangeNotification(StatTypes.EXP), CharacterDetails);
+        this.AddObserver(OnLvlChanged, CharacterDetails.DidChangeNotification(StatTypes.LVL), CharacterDetails);
+    }
+
+    public override void _ExitTree()
+    {
+        this.RemoveObserver(OnHealthChanged, CharacterDetails.DidChangeNotification(StatTypes.HP), CharacterDetails);
+    }
+    
+    private void OnLvlChanged(object sender, object arg2)
+    {
+        var details = sender as CharacterDetails;
+        GetNode<Label>(LevelLabelPath).Text = $"Lv.{details.LVL}";
+    }
+
+    private void OnExpChanged(object sender, object arg2)
+    {
+        var details = sender as CharacterDetails;
+        GetNode<ProgressBar>(ExpProgressPath).Value = 0.5f;
+        GetNode<Label>(ExpLabelPath).Text = $"{details.EXP}";
+    }
+    
+    private void OnManaChanged(object sender, object args)
+    {
+        var details = sender as CharacterDetails;
+        GetNode<ProgressBar>(HpProgressPath).Value = 0.5f;
+        GetNode<Label>(HpLabelPath).Text = $"{details[StatTypes.MP]}/{details[StatTypes.MMP]}";
+    }
+
+    private void OnHealthChanged(object sender, object args)
+    {
+        var details = sender as CharacterDetails;
+        GetNode<ProgressBar>(HpProgressPath).Value = 0.5f;
+        GetNode<Label>(HpLabelPath).Text = $"{details[StatTypes.HP]}/{details[StatTypes.MHP]}";
+    }
+
     public void Init()
     {
         GetNode<Label>(LevelLabelPath).Text = $"Lv.{CharacterDetails.LVL}";

@@ -10,7 +10,7 @@ public class PartyMembersList : Node
     [Export] private PackedScene _partyMemberPanelScene;
 
     public PartyMemberPanel this[int index] => GetChild<PartyMemberPanel>(index);
-
+    
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {

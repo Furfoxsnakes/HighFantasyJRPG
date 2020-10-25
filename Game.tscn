@@ -155,7 +155,7 @@ cell_y_sort = true
 format = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 516.169, 301.16 )
+position = Vector2( 518.705, 287.087 )
 current = true
 
 [node name="Party" type="Node" parent="."]
@@ -177,6 +177,9 @@ Resource( "res://Resources/HealthPotion.tres" ): 1
 
 [node name="AnimationTree" parent="Characters/PlayerCharacter" index="1"]
 parameters/playback = SubResource( 5 )
+
+[node name="RemoteTransform2D" parent="Characters/PlayerCharacter" index="4"]
+remote_path = NodePath("../../../Camera2D")
 
 [node name="Dialog" parent="." instance=ExtResource( 12 )]
 

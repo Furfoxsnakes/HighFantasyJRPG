@@ -17,7 +17,6 @@ public class CharactersTab : Tabs
         _partyMemberDetails = GetNode<PartyMemberDetails>("HBoxContainer/PartyMemberDetails");
 
         _partyMembersList.Connect("PartyMemberSelected", this, nameof(OnPartyMemberSelected));
-        //_partyMembersList.UpdatePartyMembers();
     }
 
     private void OnPartyMemberSelected(int selectedId)
