@@ -10,6 +10,7 @@ public class PartyMember : Node
     public void Init(CharacterDetails details)
     {
         CharacterDetails = details;
+        CharacterDetails[StatTypes.LVL] = LevelForExperience(CharacterDetails[StatTypes.EXP]);
     }
     
     public override void _EnterTree()
@@ -33,6 +34,7 @@ public class PartyMember : Node
     private void OnExpDidChange(object sender, object args)
     {
         // update the LVL stat when the character receives new EXP
+        GD.Print(args);
         CharacterDetails.SetValue(StatTypes.LVL, LevelForExperience(CharacterDetails.EXP), false);
     }
 

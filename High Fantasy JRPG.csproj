@@ -18,6 +18,7 @@
   <ItemGroup>
     <Compile Include="Characters\Character.cs" />
     <Compile Include="Characters\NPCCharacter.cs" />
+    <Compile Include="Characters\OverworldCharacter.cs" />
     <Compile Include="Characters\PlayerCharacter.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

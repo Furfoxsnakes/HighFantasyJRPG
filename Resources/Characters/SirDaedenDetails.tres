@@ -9,4 +9,4 @@ script = ExtResource( 3 )
 Name = "Sir Daeden"
 CharacterPortrait = ExtResource( 2 )
 CharacterFull = ExtResource( 1 )
-_data = PoolIntArray( 1, 0, 25, 50, 0, 0, 0, 0, 0 )
+_data = PoolIntArray( 20, 0, 40, 50, 0, 0, 0, 0, 0 )

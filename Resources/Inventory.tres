@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource( 1 )
 Items = {
-Resource( "res://Resources/ManaPotion.tres" ): 5,
-Resource( "res://Resources/HealthPotion.tres" ): 10
+Resource( "res://Resources/HealthPotion.tres" ): 10,
+Resource( "res://Resources/ManaPotion.tres" ): 5
 }

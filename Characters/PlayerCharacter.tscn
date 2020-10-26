@@ -274,10 +274,10 @@ tracks/0/keys = {
 
 [node name="PlayerCharacter" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-InventoryList = [ ExtResource( 4 ) ]
 InventoryDict = {
 ExtResource( 4 ): 1
 }
+InventoryList = [ ExtResource( 4 ) ]
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
@@ -311,5 +311,5 @@ anims/WalkWest = SubResource( 17 )
 position = Vector2( -2.24493, 0 )
 shape = SubResource( 18 )
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." index="5"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." index="4"]
 position = Vector2( -2.24493, 0 )

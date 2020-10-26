@@ -9,4 +9,4 @@ script = ExtResource( 3 )
 Name = "The Wall"
 CharacterPortrait = ExtResource( 1 )
 CharacterFull = ExtResource( 2 )
-_data = PoolIntArray( 1, 0, 0, 0, 0, 0, 0, 0, 0 )
+_data = PoolIntArray( 1, 0, 25, 50, 0, 0, 0, 0, 0 )

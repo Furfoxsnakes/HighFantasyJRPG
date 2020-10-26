@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Godot;
 
-public class PlayerCharacter : Character
+public class PlayerCharacter : OverworldCharacter
 {
     [Export] public bool CanMove = true;
     [Export] public Dictionary<Item, int> InventoryDict = new Dictionary<Item, int>();
